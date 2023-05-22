@@ -34,24 +34,27 @@ void insert()
 
      printf("\nelement cannot be inserted\n");
 }
-void search()
-{
 
- int key,index,i,flag=0,hkey;
- printf("\nenter search element\n");
- scanf("%d",&key);
- hkey=key%TABLE_SIZE;
- for(i=0;i<TABLE_SIZE; i++)
- {
-    index=(hkey+i)%TABLE_SIZE;
-    if(h[index]==key)
+void delete()
+{
+    int key, index, i, flag = 0, hkey;
+    printf("\nEnter the element to delete: ");
+    scanf("%d", &key);
+    hkey = key % TABLE_SIZE;
+
+    for (i = 0; i < TABLE_SIZE; i++)
     {
-      printf("value is found at index %d",index);
-      break;
+        index = (hkey + i) % TABLE_SIZE;
+        if (h[index] == key)
+        {
+            h[index] = 0;
+            printf("\nElement %d deleted successfully!", key);
+            break;
+        }
     }
-  }
-  if(i == TABLE_SIZE)
-    printf("\n value is not found\n");
+
+    if (i == TABLE_SIZE)
+        printf("\nElement not found in the hash table!");
 }
 void display()
 {
@@ -68,22 +71,23 @@ void display()
 main()
 {
     int opt,i;
-    while(1)
+   while (1)
+{
+    printf("\nPress\n1. Insert\n2. Display\n3. Search\n4. Delete\n5. Exit\n");
+    scanf("%d", &opt);
+    switch (opt)
     {
-        printf("\nPress \n1. Insert\t\n2. Display \t\n3. Search \t\n4.Exit \n");
-        scanf("%d",&opt);
-        switch(opt)
-        {
-            case 1:
-                insert();
-                break;
-            case 2:
-                display();
-                break;
-            case 3:
-                search();
-                break;
-            case 4:exit(0);
-        }
+        case 1:
+            insert();
+            break;
+        case 2:
+            display();
+            break;
+        case 3:
+            delete();
+            break;
+        case 4:
+            exit(0);
     }
+}
 }
