@@ -34,8 +34,7 @@ void insert()
 
      printf("\nelement cannot be inserted\n");
 }
-
-void delete()
+void deleteKey()
 {
     int key, index, i, flag = 0, hkey;
     printf("\nEnter the element to delete: ");
@@ -56,6 +55,7 @@ void delete()
     if (i == TABLE_SIZE)
         printf("\nElement not found in the hash table!");
 }
+
 void display()
 {
 
@@ -71,23 +71,22 @@ void display()
 main()
 {
     int opt,i;
-   while (1)
-{
-    printf("\nPress\n1. Insert\n2. Display\n3. Search\n4. Delete\n5. Exit\n");
-    scanf("%d", &opt);
-    switch (opt)
+    while(1)
     {
-        case 1:
-            insert();
-            break;
-        case 2:
-            display();
-            break;
-        case 3:
-            delete();
-            break;
-        case 4:
-            exit(0);
+        printf("\nPress \n1. Insert\t\n2. Display \t\n3.delete \t\n4.Exit \n");
+        scanf("%d",&opt);
+        switch(opt)
+        {
+            case 1:
+                insert();
+                break;
+            case 2:
+                display();
+                break;
+            case 3:
+                 deleteKey();
+                break;
+            case 4:exit(0);
+        }
     }
-}
 }
